@@ -29,6 +29,7 @@ async function getWeather(location) {
 		conditions.textContent = json.currentConditions.conditions;
 		weatherIcon.src = `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/SVG/1st%20Set%20-%20Color/${json.currentConditions.icon}.svg`;
 		weatherIcon.style.display = "block";
+		document.body.className = json.currentConditions.icon;
 	} catch (error) {
 		cityName.textContent = error.message;
 		temp.textContent = `-- °C`;

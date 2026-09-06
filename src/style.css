@@ -1,8 +1,45 @@
-html {
-	background-color: rgb(173, 173, 250);
-}
-
 #weather-icon {
 	display: none;
 	height: 40px;
+}
+
+/* Varsayılan Arka Plan */
+body {
+	transition: background-color 0.5s ease;
+	font-family: sans-serif;
+		
+}
+
+/* Hava Durumuna Göre Arka Plan Renkleri */
+body.clear-day {
+	background: linear-gradient(
+		135deg,
+		#fceabb,
+		#f8b500
+	); /* Güneşli / Sarı-Turuncu */
+}
+
+body.rain {
+	background: linear-gradient(
+		135deg,
+		#616161,
+		#9bc5c3
+	); /* Yağmurlu / Gri-Mavi */
+}
+
+body.cloudy,
+body.partly-cloudy-day {
+	background: linear-gradient(
+		135deg,
+		#bdc3c7,
+		#2c3e50
+	); /* Bulutlu / Koyu Gri */
+}
+
+body.snow {
+	background: linear-gradient(
+		135deg,
+		#e6dada,
+		#274046
+	); /* Karlı / Soğuk Mavi */
 }
