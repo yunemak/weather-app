@@ -13,7 +13,11 @@ async function getWeather() {
 	try {
 		let response = await fetch(url);
 		let json = await response.json();
-		console.log(json);
+		console.log(`Şehir adı: ${json.resolvedAddress}`);
+		console.log(`Anlık sıcaklık: ${json.currentConditions.temp}`);
+		console.log(`Hava durumu: ${json.currentConditions.conditions}`);
+		console.log(`Bugün en yüksek sıcaklık: ${json.days[0].tempmax}`);
+		console.log(`Bugün en düşük sıcaklık: ${json.days[0].tempmin}`);
 	} catch (error) {
 		console.log("Some error occured");
 	}
