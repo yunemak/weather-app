@@ -7,8 +7,18 @@
 	</head>
 	<body>
 		<h1>Weather App</h1>
+		<div id="search-box">
+			<label for="city-input">City: </label>
+			<input
+				id="city-input"
+				type="text"
+				placeholder="Enter city name..."
+			/>
+			<button id="search-button" type="button">Search</button>
+		</div>
 		<div id="weather-card">
 			<h2 id="city-name">--</h2>
+			<img id="weather-icon" alt="Weather Icon" />
 			<p id="temp">-- °C</p>
 			<p id="conditions">--</p>
 		</div>

@@ -1,16 +1,20 @@
 import "./style.css";
 
+const cityInput = document.getElementById("city-input");
+const searchButton = document.getElementById("search-button");
+
 const weatherCard = document.getElementById("weather-card");
 const cityName = document.getElementById("city-name");
+const weatherIcon = document.getElementById("weather-icon");
 const temp = document.getElementById("temp");
 const conditions = document.getElementById("conditions");
 
-console.log("deneme");
-
 const apiKey = "WWFDD6U4G65S9P5GNQAEYDYDV";
 
-// getWeather("Ankaraaaaaaaa");
-getWeather("İstanbul");
+searchButton.addEventListener("click", (e) => {
+	let city = cityInput.value;
+	getWeather(city);
+});
 
 async function getWeather(location) {
 	try {
@@ -23,9 +27,11 @@ async function getWeather(location) {
 		cityName.textContent = json.resolvedAddress;
 		temp.textContent = `${json.days[0].temp} °C`;
 		conditions.textContent = json.currentConditions.conditions;
-		console.log(`Bugün en yüksek sıcaklık: ${json.days[0].tempmax}`);
-		console.log(`Bugün en düşük sıcaklık: ${json.days[0].tempmin}`);
+		weatherIcon.src = `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/SVG/1st%20Set%20-%20Color/${json.currentConditions.icon}.svg`;
+		weatherIcon.style.display = "block";
 	} catch (error) {
-		console.log(`Error: ${error.message}`);
+		cityName.textContent = error.message;
+		temp.textContent = `-- °C`;
+		conditions.textContent = "--";
 	}
 }
