@@ -1,10 +1,15 @@
 import "./style.css";
 
+const weatherCard = document.getElementById("weather-card");
+const cityName = document.getElementById("city-name");
+const temp = document.getElementById("temp");
+const conditions = document.getElementById("conditions");
+
 console.log("deneme");
 
 const apiKey = "WWFDD6U4G65S9P5GNQAEYDYDV";
 
-getWeather("Ankaraaaaaaaa");
+// getWeather("Ankaraaaaaaaa");
 getWeather("İstanbul");
 
 async function getWeather(location) {
@@ -15,9 +20,9 @@ async function getWeather(location) {
 			throw new Error(`The city ${location} cannot be found!`);
 		}
 		let json = await response.json();
-		console.log(`Şehir adı: ${json.resolvedAddress}`);
-		console.log(`Anlık sıcaklık: ${json.currentConditions.temp}`);
-		console.log(`Hava durumu: ${json.currentConditions.conditions}`);
+		cityName.textContent = json.resolvedAddress;
+		temp.textContent = `${json.days[0].temp} °C`;
+		conditions.textContent = json.currentConditions.conditions;
 		console.log(`Bugün en yüksek sıcaklık: ${json.days[0].tempmax}`);
 		console.log(`Bugün en düşük sıcaklık: ${json.days[0].tempmin}`);
 	} catch (error) {
